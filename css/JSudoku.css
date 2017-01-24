@@ -1,0 +1,133 @@
+#grille_sudoku{
+    border:1px solid #000000;
+}
+
+#grille_sudoku td{
+    border: 1px solid gray;
+    line-height: 40px;
+    width: 40px;
+    text-align: center;
+    font-size: 30px;
+    font-family: Arial;
+    cursor: default;
+}
+
+#grille_sudoku td#cell_0_0,
+#grille_sudoku td#cell_0_1,
+#grille_sudoku td#cell_0_2,
+#grille_sudoku td#cell_0_3,
+#grille_sudoku td#cell_0_4,
+#grille_sudoku td#cell_0_5,
+#grille_sudoku td#cell_0_6,
+#grille_sudoku td#cell_0_7,
+#grille_sudoku td#cell_0_8,
+#grille_sudoku td#cell_3_0,
+#grille_sudoku td#cell_3_1,
+#grille_sudoku td#cell_3_2,
+#grille_sudoku td#cell_3_3,
+#grille_sudoku td#cell_3_4,
+#grille_sudoku td#cell_3_5,
+#grille_sudoku td#cell_3_6,
+#grille_sudoku td#cell_3_7,
+#grille_sudoku td#cell_3_8,
+#grille_sudoku td#cell_6_0,
+#grille_sudoku td#cell_6_1,
+#grille_sudoku td#cell_6_2,
+#grille_sudoku td#cell_6_3,
+#grille_sudoku td#cell_6_4,
+#grille_sudoku td#cell_6_5,
+#grille_sudoku td#cell_6_6,
+#grille_sudoku td#cell_6_7,
+#grille_sudoku td#cell_6_8{
+    border-top-color: #000000;
+}
+
+#grille_sudoku td#cell_2_0,
+#grille_sudoku td#cell_2_1,
+#grille_sudoku td#cell_2_2,
+#grille_sudoku td#cell_2_3,
+#grille_sudoku td#cell_2_4,
+#grille_sudoku td#cell_2_5,
+#grille_sudoku td#cell_2_6,
+#grille_sudoku td#cell_2_7,
+#grille_sudoku td#cell_2_8,
+#grille_sudoku td#cell_5_0,
+#grille_sudoku td#cell_5_1,
+#grille_sudoku td#cell_5_2,
+#grille_sudoku td#cell_5_3,
+#grille_sudoku td#cell_5_4,
+#grille_sudoku td#cell_5_5,
+#grille_sudoku td#cell_5_6,
+#grille_sudoku td#cell_5_7,
+#grille_sudoku td#cell_5_8,
+#grille_sudoku td#cell_8_0,
+#grille_sudoku td#cell_8_1,
+#grille_sudoku td#cell_8_2,
+#grille_sudoku td#cell_8_3,
+#grille_sudoku td#cell_8_4,
+#grille_sudoku td#cell_8_5,
+#grille_sudoku td#cell_8_6,
+#grille_sudoku td#cell_8_7,
+#grille_sudoku td#cell_8_8{
+    border-bottom-color: #000000;
+}
+
+#grille_sudoku td#cell_0_0,
+#grille_sudoku td#cell_1_0,
+#grille_sudoku td#cell_2_0,
+#grille_sudoku td#cell_3_0,
+#grille_sudoku td#cell_4_0,
+#grille_sudoku td#cell_5_0,
+#grille_sudoku td#cell_6_0,
+#grille_sudoku td#cell_7_0,
+#grille_sudoku td#cell_8_0,
+#grille_sudoku td#cell_0_3,
+#grille_sudoku td#cell_1_3,
+#grille_sudoku td#cell_2_3,
+#grille_sudoku td#cell_3_3,
+#grille_sudoku td#cell_4_3,
+#grille_sudoku td#cell_5_3,
+#grille_sudoku td#cell_6_3,
+#grille_sudoku td#cell_7_3,
+#grille_sudoku td#cell_8_3,
+#grille_sudoku td#cell_0_6,
+#grille_sudoku td#cell_1_6,
+#grille_sudoku td#cell_2_6,
+#grille_sudoku td#cell_3_6,
+#grille_sudoku td#cell_4_6,
+#grille_sudoku td#cell_5_6,
+#grille_sudoku td#cell_6_6,
+#grille_sudoku td#cell_7_6,
+#grille_sudoku td#cell_8_6{
+    border-left-color: #000000;
+}
+
+#grille_sudoku td#cell_0_2,
+#grille_sudoku td#cell_1_2,
+#grille_sudoku td#cell_2_2,
+#grille_sudoku td#cell_3_2,
+#grille_sudoku td#cell_4_2,
+#grille_sudoku td#cell_5_2,
+#grille_sudoku td#cell_6_2,
+#grille_sudoku td#cell_7_2,
+#grille_sudoku td#cell_8_2,
+#grille_sudoku td#cell_0_5,
+#grille_sudoku td#cell_1_5,
+#grille_sudoku td#cell_2_5,
+#grille_sudoku td#cell_3_5,
+#grille_sudoku td#cell_4_5,
+#grille_sudoku td#cell_5_5,
+#grille_sudoku td#cell_6_5,
+#grille_sudoku td#cell_7_5,
+#grille_sudoku td#cell_8_5,
+#grille_sudoku td#cell_0_8,
+#grille_sudoku td#cell_1_8,
+#grille_sudoku td#cell_2_8,
+#grille_sudoku td#cell_3_8,
+#grille_sudoku td#cell_4_8,
+#grille_sudoku td#cell_5_8,
+#grille_sudoku td#cell_6_8,
+#grille_sudoku td#cell_7_8,
+#grille_sudoku td#cell_8_8{
+    border-right-color: #000000;
+}
