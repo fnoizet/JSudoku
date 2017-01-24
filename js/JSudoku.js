@@ -30,15 +30,15 @@ Array.prototype.popElement = function()
             return this;
         }
     }
-        var element;
-        var cpArray = this.copy();
-        while(this.length > 0){this.pop();}
-        for (i = 0; i < arguments.length; i++) {
-                element = arguments[i];
-                for (var j = 0; j < cpArray.length; j++){
-                        if(cpArray[j] !== element){this.push(cpArray[j]);}
-                }
+    var element;
+    var cpArray = this.copy();
+    while(this.length > 0){this.pop();}
+    for (i = 0; i < arguments.length; i++) {
+        element = arguments[i];
+        for (var j = 0; j < cpArray.length; j++){
+            if(cpArray[j] !== element){this.push(cpArray[j]);}
         }
+    }
     return this;
 };
 //
@@ -71,18 +71,18 @@ function randN()
     var min;
     var res;
     if(arguments.length === 2){
-            max = arguments[1];
-            min = arguments[0];
+        max = arguments[1];
+        min = arguments[0];
     }else if(arguments.length === 1){
-            max = arguments[0];
-            min = 0;
+        max = arguments[0];
+        min = 0;
     }else{
-            return 0;
+        return 0;
     }
     if(min > max){
-            var tmp = min;
-            min = max;
-            max = tmp;
+        var tmp = min;
+        min = max;
+        max = tmp;
     }
     max ++;
     res = Math.floor(Math.random() * (max - min)) + min;
@@ -126,30 +126,30 @@ function sudoku()
         display: function ()
         {
             var matrice = this.matrix;
-                var ssMatrice = null;
-                var table = document.createElement("table");
-                table.id = "grille_sudoku";
-                table.className = "grille_sudoku";
-                table.cellSpacing = "0";
-                var tbody = document.createElement("tbody");
-                table.appendChild(tbody);
+            var ssMatrice = null;
+            var table = document.createElement("table");
+            table.id = "grille_sudoku";
+            table.className = "grille_sudoku";
+            table.cellSpacing = "0";
+            var tbody = document.createElement("tbody");
+            table.appendChild(tbody);
 
-                var newLine = null;
-                var newCell = null;
-                for(var i = 0; i < matrice.length; i++){
-                        newLine = document.createElement("tr");
-                        ssMatrice = matrice[i];
-                        for(var j = 0; j < ssMatrice.length; j++){
-                                newCell = document.createElement("td");
+            var newLine = null;
+            var newCell = null;
+            for(var i = 0; i < matrice.length; i++){
+                newLine = document.createElement("tr");
+                ssMatrice = matrice[i];
+                for(var j = 0; j < ssMatrice.length; j++){
+                    newCell = document.createElement("td");
                     newCell.id = "cell_" + i + '_' + j;
-                                newCell.innerHTML = ssMatrice[j];
-                                newLine.appendChild(newCell);
-                        }
-
-                        table.appendChild(newLine);
+                    newCell.innerHTML = ssMatrice[j];
+                    newLine.appendChild(newCell);
                 }
 
-                document.body.appendChild(table);
+                table.appendChild(newLine);
+            }
+
+            document.body.appendChild(table);
         },
         /* renvoit la r�gion de 3x3 dans lequel est la cellule en indexLine x indexCol */
         getRegion: function (indexLine, indexCol)
@@ -157,17 +157,17 @@ function sudoku()
             var matrice = [];
             var interval = {};
             interval.i = ((indexLine - indexLine % 3) / 3);
-                interval.j = ((indexCol - indexCol % 3) / 3);
+            interval.j = ((indexCol - indexCol % 3) / 3);
 
-                if(interval.i > 8){interval.i = 8;}
-                if(interval.j > 8){interval.j = 8;}
+            if(interval.i > 8){interval.i = 8;}
+            if(interval.j > 8){interval.j = 8;}
 
-                for(var i = 0; i < 3; i++){
-                        matrice[i] = [];
-                        for(var j = 0; j < 3; j++){
-                                matrice[i][j] = this.matrix[i + (interval.i * 3)][j + (interval.j * 3)];
-                        }
+            for(var i = 0; i < 3; i++){
+                matrice[i] = [];
+                for(var j = 0; j < 3; j++){
+                    matrice[i][j] = this.matrix[i + (interval.i * 3)][j + (interval.j * 3)];
                 }
+            }
             return matrice;
         },
         setCellValue: function (value, iLine, iCol) {
@@ -189,7 +189,7 @@ function sudoku()
             for (var j = 0; j < 9; j++) {
                 if (ligne === 0) {
                     arrayPurposes.push(this.getPurposes(ligne, j));
-                }else{
+                } else {
                     arrayPurposes.push(this.getPurposes(ligne, j));
                 }
             }
@@ -239,34 +239,34 @@ function sudoku()
         isInSquare: function (number, indexLine, indexCol)
         {
             var square = this.getRegion(indexLine, indexCol);
-                var ssMatrice;
-                for(var i = 0; i < square.length; i++){
-                        ssMatrice = square[i];
-                        for(var j=0; j < ssMatrice.length; j++){
-                                if(number === ssMatrice[j]){
-                                        return true;
-                                }
-                        }
+            var ssMatrice;
+            for(var i = 0; i < square.length; i++){
+                ssMatrice = square[i];
+                for(var j=0; j < ssMatrice.length; j++){
+                    if(number === ssMatrice[j]){
+                        return true;
+                    }
                 }
-                return false;
+            }
+            return false;
         },
         isInLine: function (number, indexLine)
         {
             for(var j = 0; j < this.matrix[indexLine].length; j++){
-                        if(number === this.matrix[indexLine][j]){
-                                return true;
-                        }
+                if(number === this.matrix[indexLine][j]){
+                    return true;
                 }
-                return false;
+            }
+            return false;
         },
         isInColumn: function (number, indexCol)
         {
             for(var i = 0; i < this.matrix.length; i++){
-                        if(number === this.matrix[i][indexCol]){
-                                return true;
-                        }
+                if(number === this.matrix[i][indexCol]){
+                    return true;
                 }
-                return false;
+            }
+            return false;
         },
         /**
          * Return true or false whether the value can be set in iLine x iCol
@@ -277,11 +277,11 @@ function sudoku()
          */
         isSettable: function (value, iLine, iCol)
         {
-                if(!this.isInLine(value, iLine) && !this.isInColumn(value, iCol) && !this.isInSquare(value, iLine, iCol)){
-                        return true;
-                }else{
-                        return false;
-                }
+            if(!this.isInLine(value, iLine) && !this.isInColumn(value, iCol) && !this.isInSquare(value, iLine, iCol)){
+                return true;
+            }else{
+                return false;
+            }
         }
     };
 
@@ -291,8 +291,8 @@ function sudoku()
 
 function initSudoku()
 {
-        mySudoku = new sudoku();
-        mySudoku.display();
+    mySudoku = new sudoku();
+    mySudoku.display();
     mySudoku.fill();
 
 }
