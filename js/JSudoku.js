@@ -138,13 +138,13 @@ function sudoku()
         {
             var matrice = this.matrix;
             var ssMatrice = null;
-            var table = document.createElement("table");
-            table.id = "grille_sudoku";
-            table.className = "grille_sudoku";
-            table.cellSpacing = "0";
+            this.table = document.createElement("table");
+            this.table.id = "grille_sudoku";
+            this.table.className = "grille_sudoku";
+            this.table.cellSpacing = "0";
             var tbody = document.createElement("tbody");
-            table.appendChild(tbody);
-
+            this.table.appendChild(tbody);
+            
             var newLine = null;
             var newCell = null;
             for(var i = 0; i < matrice.length; i++){
@@ -155,15 +155,30 @@ function sudoku()
                     newCell.id = "cell_" + i + '_' + j;
                     if (this.pattern[i][j] === 1) {
                         newCell.innerHTML = ssMatrice[j];
+                    } else {
+                        this.bindPopinChoice(newCell);
                     }
                     
                     newLine.appendChild(newCell);
                 }
 
-                table.appendChild(newLine);
+                this.table.appendChild(newLine);
             }
 
-            document.body.appendChild(table);
+            document.body.appendChild(this.table);
+            
+            this.popin = document.createElement('div');
+            this.popin.id = 'popin';
+            
+            for (var i = 1; i < 10; i++) {
+                var popinChoiceElt = document.createElement('div');
+                popinChoiceElt.id = i;
+                popinChoiceElt.className = "popinChoice";
+                popinChoiceElt.innerHTML = i;
+                this.popin.appendChild(popinChoiceElt);
+            }
+            
+            document.body.appendChild(this.popin);
         },
         /* renvoit la r�gion de 3x3 dans lequel est la cellule en indexLine x indexCol */
         getRegion: function (indexLine, indexCol)
@@ -200,30 +215,17 @@ function sudoku()
             var purpose;
             var arrayPurposes = [];
             for (var j = 0; j < 9; j++) {
-                if (ligne === 0) {
-                    arrayPurposes.push(this.getPurposes(ligne, j));
-                } else {
-                    arrayPurposes.push(this.getPurposes(ligne, j));
+                arrayPurposes.push(this.getPurposes(ligne, j));
+            }
+
+            for (j = 0; j < this.matrix[ligne].length; j++) {
+                purpose = arrayPurposes[j][randN(arrayPurposes[j].length - 1)];
+                this.setCellValue(purpose, ligne, j);
+                for (var k = 0; k < this.matrix[ligne].length; k++) {
+                    arrayPurposes[k].popElement(purpose);
                 }
             }
 
-            if (ligne === 0) {// premiere ligne
-                for (j = 0; j < this.matrix[ligne].length; j++) {
-                    purpose = arrayPurposes[j][randN(arrayPurposes[j].length - 1)];
-                    this.setCellValue(purpose, ligne, j);
-                    for (var k = 0; k < this.matrix[ligne].length; k++) {
-                        arrayPurposes[k].popElement(purpose);
-                    }
-                }
-            } else { // pour les autres lignes
-                for (j = 0; j < this.matrix[ligne].length; j++) {
-                    purpose = arrayPurposes[j][randN(arrayPurposes[j].length - 1)];
-                    this.setCellValue(purpose, ligne, j);
-                    for (var k = 0; k < this.matrix[ligne].length; k++) {
-                        arrayPurposes[k].popElement(purpose);
-                    }
-                }
-            }
             if (this.replayCreateLine) {
                 this.replayCreateLine = false;
                 this.cleanLine(ligne);
@@ -237,7 +239,7 @@ function sudoku()
                 this.currentLineRecursion = 0;
             }
         },
-        /* renvoit la liste des valeurs possible pour une case */
+        /* Returns possible values for a cell */
         getPurposes: function(indexLine, indexCol)
         {
             var res = [];
@@ -248,7 +250,7 @@ function sudoku()
             }
             return res;
         },
-        /* return true / false renvoit si la valeur est pr�sente */
+        /* return true / false renvoit si la valeur est présente */
         isInSquare: function (number, indexLine, indexCol)
         {
             var square = this.getRegion(indexLine, indexCol);
@@ -295,6 +297,13 @@ function sudoku()
             }else{
                 return false;
             }
+        },
+        bindPopinChoice: function(cell) {
+            var that = this;
+            cell.addEventListener('click', function(e) {
+                cell.appendChild(that.popin);
+                that.popin.style.display = 'block';
+            }, false);
         }
     };
 
