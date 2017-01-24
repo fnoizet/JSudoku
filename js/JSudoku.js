@@ -95,6 +95,17 @@ function sudoku()
     var oSudoku = {
         //properties
         matrix : [],
+        pattern : [
+            [1,0,1,0,0,0,1,0,1],
+            [0,0,1,0,0,0,1,0,0],
+            [1,0,0,1,0,1,0,0,1],
+            [0,1,0,1,0,1,0,1,0],
+            [0,0,0,0,1,0,0,0,0],
+            [0,1,0,1,0,1,0,1,0],
+            [1,0,0,1,0,1,0,0,1],
+            [0,0,1,0,0,0,1,0,0],
+            [1,0,1,0,0,0,1,0,1]
+        ],
         replayCreateLine: false,
         currentLineRecursion: 0,
         //methods,
@@ -142,7 +153,10 @@ function sudoku()
                 for(var j = 0; j < ssMatrice.length; j++){
                     newCell = document.createElement("td");
                     newCell.id = "cell_" + i + '_' + j;
-                    newCell.innerHTML = ssMatrice[j];
+                    if (this.pattern[i][j] === 1) {
+                        newCell.innerHTML = ssMatrice[j];
+                    }
+                    
                     newLine.appendChild(newCell);
                 }
 
@@ -175,7 +189,6 @@ function sudoku()
                 this.replayCreateLine = true;
             }
             this.matrix[iLine][iCol] = value;
-            document.getElementById('cell_' + iLine + '_' + iCol).innerHTML = value;
         },
         cleanLine: function (iLine) {
             for (var iCol = 0; iCol < this.matrix[iLine].length; iCol++) {
@@ -292,7 +305,6 @@ function sudoku()
 function initSudoku()
 {
     mySudoku = new sudoku();
-    mySudoku.display();
     mySudoku.fill();
-
+    mySudoku.display();
 }
